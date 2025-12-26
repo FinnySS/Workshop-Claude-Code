@@ -1,0 +1,6 @@
+name = "tetris-game"
+main = "src/worker.js"
+compatibility_date = "2025-12-26"
+
+[site]
+bucket = "./public"
