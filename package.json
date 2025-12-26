@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Tetris game deployed on Cloudflare Pages",
   "scripts": {
-    "dev": "wrangler pages dev public",
-    "deploy": "wrangler pages deploy public",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
     "build": "echo 'No build needed - static site'"
   },
   "keywords": ["tetris", "game", "cloudflare-pages"],
