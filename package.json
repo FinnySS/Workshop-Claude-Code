@@ -1,20 +1,16 @@
 {
   "name": "tetris-game",
   "version": "1.0.0",
-  "description": "Tetris game deployed on Cloudflare Workers",
-  "main": "src/worker.js",
+  "description": "Tetris game deployed on Cloudflare Pages",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "build": "wrangler deploy --dry-run"
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public",
+    "build": "echo 'No build needed - static site'"
   },
-  "keywords": ["tetris", "game", "cloudflare-workers"],
+  "keywords": ["tetris", "game", "cloudflare-pages"],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.3.4"
-  },
   "devDependencies": {
-    "wrangler": "^3.78.0"
+    "wrangler": "^4.54.0"
   }
 }
