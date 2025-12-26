@@ -1,252 +1,252 @@
-# GEMINI.md - Project Guidelines & Documentation
+# GEMINI.md - คู่มือและเอกสารประกอบโครงการ
 
-## 📚 Table of Contents
+## 📚 สารบัญ
 
-1. Executive Summary
-2. Quick Start Guide
-3. Project Context
-4. Critical Safety Rules
-5. Development Environment
-6. Development Workflows
-7. Context Management & Short Codes
-8. Technical Reference
-9. Development Practices
-10. Lessons Learned
-11. Troubleshooting
-12. Appendices
+1. บทสรุปผู้บริหาร (Executive Summary)
+2. คู่มือเริ่มต้นอย่างรวดเร็ว (Quick Start Guide)
+3. บริบทของโครงการ (Project Context)
+4. กฎความปลอดภัยที่สำคัญ (Critical Safety Rules)
+5. สภาพแวดล้อมการพัฒนา (Development Environment)
+6. ขั้นตอนการทำงาน (Development Workflows)
+7. การจัดการบริบทและรหัสย่อ (Context Management & Short Codes)
+8. ข้อมูลอ้างอิงทางเทคนิค (Technical Reference)
+9. แนวปฏิบัติในการพัฒนา (Development Practices)
+10. บทเรียนที่ได้รับ (Lessons Learned)
+11. การแก้ไขปัญหา (Troubleshooting)
+12. ภาคผนวก (Appendices)
 
-## Executive Summary
+## บทสรุปผู้บริหาร (Executive Summary)
 
-This document provides comprehensive guidelines for the AI assistant working on the Tetris project. It establishes safe, efficient, and well-documented workflows to ensure high-quality contributions.
+เอกสารนี้ให้แนวทางปฏิบัติที่ครอบคลุมสำหรับผู้ช่วย AI ที่ทำงานในโครงการ Tetris โดยกำหนดขั้นตอนการทำงานที่ปลอดภัย มีประสิทธิภาพ และมีการบันทึกไว้อย่างดี เพื่อให้มั่นใจในคุณภาพของงานที่ทำ
 
-### Key Responsibilities
+### ความรับผิดชอบหลัก
 
-• Code development and implementation
-• Testing and quality assurance
-• Documentation and session retrospectives
-• Following safe and efficient development workflows
-• Maintaining project context and history
+• การพัฒนาและติดตั้งโค้ด (Code development and implementation)
+• การทดสอบและประกันคุณภาพ (Testing and quality assurance)
+• การทำเอกสารและการสรุปผลการทำงาน (Documentation and session retrospectives)
+• การปฏิบัติตามขั้นตอนการพัฒนาที่ปลอดภัยและมีประสิทธิภาพ
+• การรักษาบริบทและประวัติของโครงการ
 
-### Quick Reference - Short Codes
+### ข้อมูลอ้างอิงด่วน - รหัสย่อ (Short Codes)
 
-#### Context & Planning Workflow (Core Pattern)
+#### ขั้นตอนการวางแผนและบริบท (รูปแบบหลัก)
 
-•  ccc  - Create context issue and compact the conversation.
-•  nnn  - Smart planning: Auto-runs  ccc  if no recent context → Create a detailed implementation plan.
-•  gogogo  - Execute the most recent plan issue step-by-step.
-•  lll  - List project status (issues, PRs, commits) ✅
+•  ccc  - สร้าง Context Issue และย่อบทสนทนา (Compact)
+•  nnn  - การวางแผนอัจฉริยะ: รัน  ccc  อัตโนมัติถ้าไม่มี Context ล่าสุด → สร้างแผนการทำงานโดยละเอียด
+•  gogogo  - ดำเนินการตามแผนล่าสุดทีละขั้นตอน
+•  lll  - แสดงสถานะโครงการ (Issues, PRs, Commits) ✅
 
-#### Project Management
+#### การจัดการโครงการ
 
-•  rrr  - Create a detailed session retrospective.
+•  rrr  - สร้างบันทึกสรุปผลการทำงาน (Retrospective) โดยละเอียด
 
-## Quick Start Guide
+## คู่มือเริ่มต้นอย่างรวดเร็ว (Quick Start Guide)
 
-### Prerequisites
+### สิ่งที่ต้องมีเบื้องต้น
 
-    # Check required tools
+    # ตรวจสอบเครื่องมือที่จำเป็น
     python3 --version
-    node --version    # Optional, for alternative server
+    node --version    # ทางเลือก สำหรับ Server สำรอง
     git --version
     gh --version      # GitHub CLI
 
-### Initial Setup
+### การตั้งค่าเริ่มต้น
 
-    # 1. Clone the repository (if not already done)
+    # 1. Clone repository (ถ้ายังไม่ได้ทำ)
     # git clone [repository-url]
     # cd Workshop-Claude-Code
 
-    # 2. Start the Development Server
-    # We use setsid to ensure the server persists in the background
+    # 2. เริ่ม Development Server
+    # เราใช้ setsid เพื่อให้ Server ทำงานต่อใน Background ได้
     setsid python3 -m http.server 3000 > server.log 2>&1 &
     
-    # 3. Verify Server
+    # 3. ตรวจสอบ Server
     sleep 1 && lsof -i :3000
 
-    # 4. Access the Game
-    # URL format: https://${CODESPACE_NAME}-3000.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}
+    # 4. เข้าสู่เกม
+    # รูปแบบ URL: https://${CODESPACE_NAME}-3000.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}
 
-### First Task
+### งานแรก
 
-1. Run  lll  to see the current project status.
-2. Run  nnn  to analyze the latest issue and create a plan.
-3. Use  gogogo  to implement the plan.
+1. รัน  lll  เพื่อดูสถานะโครงการปัจจุบัน
+2. รัน  nnn  เพื่อวิเคราะห์ Issue ล่าสุดและสร้างแผน
+3. ใช้  gogogo  เพื่อดำเนินการตามแผน
 
-## Project Context
+## บริบทของโครงการ (Project Context)
 
-### Project Overview
+### ภาพรวมโครงการ
 
-This project is a classic Tetris game implementation using vanilla Web Technologies. The goal is to create a performant, visually appealing arcade-style game that runs in a browser.
+โครงการนี้เป็นการสร้างเกม Tetris แบบคลาสสิกโดยใช้ Web Technologies พื้นฐาน (Vanilla) เป้าหมายคือการสร้างเกมสไตล์อาร์เคดที่มีประสิทธิภาพและสวยงาม ซึ่งทำงานบนเบราว์เซอร์ได้
 
-### Architecture
+### สถาปัตยกรรม (Architecture)
 
 • **Frontend:**
-  - **HTML5:** Uses the `<canvas>` element for high-performance 2D rendering.
-  - **CSS3:** Flexbox for layout and custom styling for a "Neon/Arcade" aesthetic.
+  - **HTML5:** ใช้ `<canvas>` element สำหรับการเรนเดอร์ 2D ที่มีประสิทธิภาพสูง
+  - **CSS3:** Flexbox สำหรับการจัดวางและสไตล์แบบกำหนดเองเพื่อให้ได้ความรู้สึก "Neon/Arcade"
   - **JavaScript (ES6+):** 
-    - **Game Loop:** Uses `requestAnimationFrame` for smooth rendering.
-    - **Logic:** Matrix-based collision detection and piece rotation.
-    - **State Management:** Simple object-based state for player score, level, and board (arena).
+    - **Game Loop:** ใช้ `requestAnimationFrame` เพื่อการเรนเดอร์ที่ลื่นไหล
+    - **Logic:** การตรวจจับการชนแบบ Matrix-based และการหมุนชิ้นส่วน
+    - **State Management:** จัดการสถานะแบบ Object อย่างง่ายสำหรับคะแนนผู้เล่น, เลเวล, และกระดาน (Arena)
 
 • **Backend / Server:**
-  - **Python:** `http.server` module (Primary for local dev).
-  - **Node.js:** `http` module (Fallback in `server.js`).
+  - **Python:** `http.server` module (หลักสำหรับการพัฒนาในเครื่อง)
+  - **Node.js:** `http` module (สำรองใน `server.js`)
 
 • **Infrastructure:**
-  - GitHub Codespaces for development.
+  - GitHub Codespaces สำหรับการพัฒนา
 
-### Current Features
+### ฟีเจอร์ปัจจุบัน
 
 • **Core Gameplay:**
-  - Tetromino rendering (7 shapes with unique colors).
-  - Grid-based movement (Left, Right, Soft Drop).
-  - Rotation logic (Wall kicks implemented simply).
-  - Line clearing and scoring.
-  - Game Over state (reset).
+  - การเรนเดอร์ Tetromino (7 รูปร่าง พร้อมสีเฉพาะตัว)
+  - การเคลื่อนที่แบบตาราง (ซ้าย, ขวา, Soft Drop)
+  - ตรรกะการหมุน (Implement Wall kicks แบบง่าย)
+  - การเคลียร์แถวและการคิดคะแนน
+  - สถานะ Game Over (รีเซ็ต)
 
 • **UI/UX:**
-  - Score, Level, and Lines display.
-  - Neon visual style.
-  - Start/Pause functionality.
+  - แสดงคะแนน, เลเวล, และจำนวนแถว
+  - สไตล์ภาพแบบ Neon
+  - ฟังก์ชัน Start/Pause
 
-## 🔴 Critical Safety Rules
+## 🔴 กฎความปลอดภัยที่สำคัญ (Critical Safety Rules)
 
-### Repository Usage
+### การใช้ Repository
 
-• NEVER create issues/PRs on upstream
+• ห้ามสร้าง Issues/PRs บน Upstream โดยเด็ดขาด (NEVER create issues/PRs on upstream)
 
-### Command Usage
+### การใช้คำสั่ง
 
-• NEVER use  -f  or  --force  flags with any commands.
-• Always use safe, non-destructive command options.
-• If a command requires confirmation, handle it appropriately without forcing.
+• ห้ามใช้ Flag  -f  หรือ  --force  กับคำสั่งใดๆ
+• ให้ใช้ตัวเลือกคำสั่งที่ปลอดภัยและไม่ทำลายข้อมูลเสมอ
+• หากคำสั่งต้องการการยืนยัน ให้จัดการอย่างเหมาะสมโดยไม่ต้องบังคับ
 
-### Git Operations
+### การจัดการ Git
 
-• Never use  git push --force  or  git push -f .
-• Never use  git checkout -f .
-• Never use  git clean -f .
-• Always use safe git operations that preserve history.
-• ⚠️ NEVER MERGE PULL REQUESTS WITHOUT EXPLICIT USER PERMISSION
-• Never use  gh pr merge  unless explicitly instructed by the user
-• Always wait for user review and approval before any merge
+• ห้ามใช้  git push --force  หรือ  git push -f  เด็ดขาด
+• ห้ามใช้  git checkout -f  เด็ดขาด
+• ห้ามใช้  git clean -f  เด็ดขาด
+• ใช้คำสั่ง Git ที่ปลอดภัยและรักษาประวัติการแก้ไขเสมอ
+• ⚠️ ห้าม MERGE PULL REQUESTS โดยไม่ได้รับอนุญาตจากผู้ใช้อย่างชัดเจน
+• ห้ามใช้  gh pr merge  เว้นแต่ได้รับคำสั่งจากผู้ใช้
+• รอให้ผู้ใช้ตรวจสอบและอนุมัติก่อนทำการ Merge เสมอ
 
-### File Operations
+### การจัดการไฟล์
 
-• Never use  rm -rf  - use  rm -i  for interactive confirmation.
-• Always confirm before deleting files.
-• Use safe file operations that can be reversed.
+• ห้ามใช้  rm -rf  - ให้ใช้  rm -i  เพื่อยืนยันแบบ Interactive
+• ยืนยันก่อนลบไฟล์เสมอ
+• ใช้การดำเนินการไฟล์ที่ปลอดภัยและสามารถกู้คืนได้
 
-### General Safety Guidelines
+### คำแนะนำความปลอดภัยทั่วไป
 
-• Prioritize safety and reversibility in all operations.
-• Ask for confirmation when performing potentially destructive actions.
-• Explain the implications of commands before executing them.
-• Use verbose options to show what commands are doing.
+• ให้ความสำคัญกับความปลอดภัยและความสามารถในการย้อนกลับในการดำเนินการทั้งหมด
+• ขอการยืนยันเมื่อทำการกระทำที่อาจทำลายข้อมูล
+• อธิบายผลกระทบของคำสั่งก่อนที่จะดำเนินการ
+• ใช้ตัวเลือก Verbose เพื่อแสดงสิ่งที่คำสั่งกำลังทำ
 
-## Development Environment
+## สภาพแวดล้อมการพัฒนา (Development Environment)
 
-### Environment Variables
+### ตัวแปรสภาพแวดล้อม (Environment Variables)
 
-#### Codespace Variables
-    CODESPACE_NAME=           # Used for URL generation
-    GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN= # Used for URL generation
+#### ตัวแปรของ Codespace
+    CODESPACE_NAME=           # ใช้สำหรับการสร้าง URL
+    GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN= # ใช้สำหรับการสร้าง URL
 
-## Development Workflows
+## ขั้นตอนการทำงาน (Development Workflows)
 
-### Testing Discipline
+### วินัยในการทดสอบ
 
-#### Manual Testing Checklist
+#### รายการตรวจสอบการทดสอบด้วยตนเอง (Manual Testing Checklist)
 
-Before pushing any changes:
+ก่อนที่จะ Push การเปลี่ยนแปลงใดๆ:
 
-[ ] Run the server: `setsid python3 -m http.server 3000 > server.log 2>&1 &`
-[ ] Verify the game loads in the preview URL.
-[ ] Test controls (Arrow keys: Left, Right, Up, Down).
-[ ] Check for collision bugs (pieces going through walls/floors).
-[ ] Verify line clearing and score updates.
-[ ] Check browser console for JavaScript errors.
+[ ] รัน Server: `setsid python3 -m http.server 3000 > server.log 2>&1 &`
+[ ] ตรวจสอบว่าเกมโหลดได้ใน URL พรีวิว
+[ ] ทดสอบการควบคุม (ปุ่มลูกศร: ซ้าย, ขวา, ขึ้น, ลง)
+[ ] ตรวจสอบบั๊กการชน (ชิ้นส่วนทะลุกำแพง/พื้น)
+[ ] ตรวจสอบการเคลียร์แถวและการอัปเดตคะแนน
+[ ] ตรวจสอบ Browser Console เพื่อหา JavaScript Errors
 
-### GitHub Workflow
+### ขั้นตอนการทำงาน Git (GitHub Workflow)
 
-#### Standard Development Flow
+#### ขั้นตอนการพัฒนามาตรฐาน
 
-    # 1. Update main branch
+    # 1. อัปเดต branch main
     git checkout main && git pull
 
-    # 2. Create a branch
+    # 2. สร้าง branch
     git checkout -b feat/description
 
-    # 3. Make changes & Test
+    # 3. แก้ไขและทดสอบ (Make changes & Test)
 
     # 4. Commit
     git add -A
     git commit -m "feat: Description"
 
-    # 5. Push and PR
+    # 5. Push และสร้าง PR
     git push -u origin feat/description
     gh pr create
 
-## Context Management & Short Codes
+## การจัดการบริบทและรหัสย่อ (Context Management & Short Codes)
 
-(See Executive Summary for core codes: ccc, nnn, lll, rrr, gogogo)
+(ดูที่บทสรุปผู้บริหารสำหรับรหัสหลัก: ccc, nnn, lll, rrr, gogogo)
 
-## Technical Reference
+## ข้อมูลอ้างอิงทางเทคนิค (Technical Reference)
 
-### Game Logic Details
-- **The Arena:** 12x20 Matrix. 0 = empty, 1-7 = colors.
-- **Collision:** `collide(arena, player)` checks overlap/boundaries.
-- **Rotation:** Transpose + Reverse.
+### รายละเอียดตรรกะเกม
+- **The Arena:** Matrix ขนาด 12x20 (0 = ว่าง, 1-7 = สี)
+- **Collision:** `collide(arena, player)` ตรวจสอบการซ้อนทับ/ขอบเขต
+- **Rotation:** Transpose + Reverse
 
-## Development Practices
+## แนวปฏิบัติในการพัฒนา (Development Practices)
 
-### Code Standards
+### มาตรฐานโค้ด (Code Standards)
 
-• **JavaScript:** Use ES6+ features (const/let, arrow functions).
-• **Formatting:** Consistent indentation (4 spaces).
-• **Comments:** Explain *why*, not *what*.
+• **JavaScript:** ใช้ฟีเจอร์ ES6+ (const/let, arrow functions)
+• **Formatting:** การย่อหน้าแบบสม่ำเสมอ (4 spaces)
+• **Comments:** อธิบายว่า *ทำไม* (why) ไม่ใช่ *ทำอะไร* (what)
 
-## Lessons Learned
+## บทเรียนที่ได้รับ (Lessons Learned)
 
-### Project-Specific Findings (Tetris)
+### สิ่งที่พบเฉพาะโครงการ (Tetris)
 
-• **Background Process Persistence:**
-  - **Issue:** `python3 -m http.server 8080 &` often terminates when the CLI tool finishes.
-  - **Solution:** Use `setsid python3 -m http.server 3000 > server.log 2>&1 &` to detach the process from the current session.
+• **ความคงอยู่ของ Background Process:**
+  - **ปัญหา:** `python3 -m http.server 8080 &` มักจะถูกปิดเมื่อ CLI tool ทำงานเสร็จ
+  - **วิธีแก้:** ใช้ `setsid python3 -m http.server 3000 > server.log 2>&1 &` เพื่อแยก Process ออกจาก Session ปัจจุบัน
 
-• **Port Visibility & URLs:**
-  - **Issue:** `localhost` is not accessible from outside the Codespace.
-  - **Solution:** Construct URLs dynamically: `https://${CODESPACE_NAME}-${PORT}.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}`.
+• **การมองเห็นพอร์ตและ URL:**
+  - **ปัญหา:** `localhost` เข้าถึงไม่ได้จากภายนอก Codespace
+  - **วิธีแก้:** สร้าง URL แบบไดนามิก: `https://${CODESPACE_NAME}-${PORT}.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}`
 
-• **Canvas Coordinate System:**
-  - **Tip:** Using `context.scale(20, 20)` allows logic to work in "grid units" (1x1) while rendering in pixels (20x20), simplifying math.
+• **ระบบพิกัด Canvas:**
+  - **เคล็ดลับ:** การใช้ `context.scale(20, 20)` ช่วยให้ตรรกะทำงานใน "หน่วยตาราง" (1x1) ในขณะที่เรนเดอร์เป็นพิกเซล (20x20) ซึ่งช่วยให้คำนวณง่ายขึ้น
 
-### General Patterns (from CLAUDE.md)
+### รูปแบบทั่วไป (จาก CLAUDE.md)
 
-• **Planning:** Break complex tasks into small, verifiable steps.
-• **Anti-Pattern:** Trying to implement everything at once.
-• **Pattern:** Use parallel agents (if available) for analysis.
+• **การวางแผน:** แบ่งงานซับซ้อนออกเป็นขั้นตอนย่อยที่ตรวจสอบได้
+• **Anti-Pattern:** พยายามทำทุกอย่างพร้อมกัน
+• **Pattern:** ใช้ Parallel Agents (ถ้ามี) สำหรับการวิเคราะห์
 
-## Troubleshooting
+## การแก้ไขปัญหา (Troubleshooting)
 
-### Common Issues
+### ปัญหาทั่วไป
 
-#### Server Not Running
-**Symptoms:** Connection refused or site not loading.
-**Fix:**
-1. Check process: `ps aux | grep python`
-2. Check logs: `cat server.log`
+#### Server ไม่ทำงาน
+**อาการ:** Connection refused หรือหน้าเว็บไม่โหลด
+**วิธีแก้:**
+1. ตรวจสอบ Process: `ps aux | grep python`
+2. ตรวจสอบ Logs: `cat server.log`
 3. Restart: `pkill -f http.server && setsid python3 -m http.server 3000 > server.log 2>&1 &`
 
-#### "ERR_EMPTY_RESPONSE" or 404
-**Symptoms:** Browser can't find the page.
-**Fix:**
-1. Ensure you are using the correct Codespace URL (not localhost).
-2. Check if the port (3000) is correct.
-3. Verify file structure (`index.html` exists).
+#### "ERR_EMPTY_RESPONSE" หรือ 404
+**อาการ:** Browser หาหน้าไม่เจอ
+**วิธีแก้:**
+1. ตรวจสอบว่าใช้ Codespace URL ที่ถูกต้อง (ไม่ใช่ localhost)
+2. ตรวจสอบว่าพอร์ต (3000) ถูกต้อง
+3. ตรวจสอบโครงสร้างไฟล์ (มี `index.html` อยู่)
 
-## Appendices
+## ภาคผนวก (Appendices)
 
-### A. Glossary
-• **Tetromino:** The geometric shapes used in the game (I, J, L, O, S, T, Z).
-• **Arena:** The game board matrix.
+### A. อภิธานศัพท์ (Glossary)
+• **Tetromino:** รูปทรงเรขาคณิตที่ใช้ในเกม (I, J, L, O, S, T, Z)
+• **Arena:** Matrix ที่เป็นกระดานเกม
